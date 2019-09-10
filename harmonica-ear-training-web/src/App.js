@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Sound from 'react-sound';
+import soundfile from './sounds/dha.aac';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class  App extends React.Component {
+  render(){
+    return (
+      <div>
+      <h1>Hello</h1>
+      <Sound
+        url={soundfile}
+        playStatus={Sound.status.PLAYING}
+        playFromPosition={300 /* in milliseconds */}
+        onLoading={this.handleSongLoading}
+        onPlaying={this.handleSongPlaying}
+        onFinishedPlaying={this.handleSongFinishedPlaying}
+      />
+      </div>
+    );
+  }
+  
 }
 
 export default App;
