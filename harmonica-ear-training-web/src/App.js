@@ -1,6 +1,8 @@
 import React from 'react';
 import Sound from 'react-sound';
 import soundfile from './sounds/dha.aac';
+import Music from './Music';
+
 
 
 class  App extends React.Component {
@@ -16,6 +18,7 @@ class  App extends React.Component {
         onPlaying={this.handleSongPlaying}
         onFinishedPlaying={this.handleSongFinishedPlaying}
       />
+      <Music/>
       </div>
     );
   }
