@@ -31,7 +31,7 @@ const note_file_map = new Map([
     ['ni_komal', ni_komal_note]       
 ]);
 
-class NoteIdentifyPractice extends React.Component{
+class NoteIdentifyQuiz extends React.Component{
 
     
     constructor(){
@@ -82,39 +82,7 @@ class NoteIdentifyPractice extends React.Component{
     render(){
         return (
             <div>
-                
-            <Table striped borderless hover>
-                <tbody>
-                        <tr>
-                            <td>
-                                <button onClick={() => this.playNote('sa')}>Sa</button>
-                            </td>
-                            <td>
-                                <button onClick={() => this.playNote('re')}>Re</button>
-                            </td>
-                            <td>
-                                <button onClick={() => this.playNote('ga')}>Ga</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button onClick={() => this.playNote('ma')}>Ma</button>
-                            </td>
-                            <td>
-                                <button onClick={() => this.playNote('pa')}>Pa</button>
-                            </td>
-                            <td>
-                                <button onClick={() => this.playNote('dha')}>Dha</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button onClick={() => this.playNote('ni')}>Ni</button>
-                            </td>
-                            
-                        </tr>
-                </tbody>                    
-            </Table>
+                <h5>Identify Note Quiz</h5>
             
             
         </div>
@@ -123,4 +91,4 @@ class NoteIdentifyPractice extends React.Component{
     }
 }
 
-export default NoteIdentifyPractice;
+export default NoteIdentifyQuiz;
