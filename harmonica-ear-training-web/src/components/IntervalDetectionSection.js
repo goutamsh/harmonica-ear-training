@@ -1,9 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import Card from 'react-bootstrap/Card';
 
-import NoteIdentifyPractice from './NoteIdentifyPractice';
 
 class IntervalDetectionSection extends React.Component{
     constructor(){
@@ -19,28 +17,16 @@ class IntervalDetectionSection extends React.Component{
 <>
             <Card>
                 <Card.Body>
-                <Card.Title>Interval Detection Practice</Card.Title>
-                This is for HArmonica Interval Detection Practice section consisting of Practive and Quiz..bla bla
+                <Card.Title>Interval Detection (Coming Soon..)</Card.Title>
+                Listen and identify the played interval
                 <br/>
-                <Button onClick={this.handleShow}>Practice</Button>
-                <Button >Quiz</Button>
+                <Button>Practice</Button>
+                <Button>Quiz</Button>
                 </Card.Body>
             </Card>
         
 
-            <Modal show={this.state.show} onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Practice Interval</Modal.Title>
-        </Modal.Header>
-        <Modal.Body></Modal.Body>                
-                 
-        <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleClose}>
-            Close
-          </Button>
-          
-        </Modal.Footer>
-      </Modal>
+            
         </>
         );
     }

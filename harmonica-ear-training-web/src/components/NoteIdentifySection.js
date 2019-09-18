@@ -23,8 +23,8 @@ class NoteIdentifySection extends React.Component{
 <>
             <Card>
                 <Card.Body>
-                <Card.Title>Notes Identification Practice</Card.Title>
-                This is for HArmonica practice section consisting of Practive and Quiz..bla bla
+                <Card.Title>Note Identification</Card.Title>
+                Listen and identify the note
                 <br/>
                 <Button onClick={this.handleShow}>Practice</Button>
                 <Button  onClick={this.handleQuizShow}>Quiz</Button>
