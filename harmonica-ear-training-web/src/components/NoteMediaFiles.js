@@ -28,3 +28,48 @@ export const note_file_map = new Map([
     // ['dha_komal', dha_komal_note],
     // ['ni_komal', ni_komal_note]       
 ]);
+
+export const quizQuestionSet = {
+    list:[
+        {
+            id: 1,
+            note: 'sa',
+            file: sa_note
+        },
+        {
+            id: 2,
+            note: 're',
+            file: re_note
+        },
+        {
+            id: 3,
+            note: 'ga',
+            file: ga_note
+        },
+        {
+            id: 4,
+            note: 'ma',
+            file: ma_note
+        },
+        {
+            id: 5,
+            note: 'pa',
+            file: pa_note
+        },
+        {
+            id: 6,
+            note: 'dha',
+            file: dha_note
+        },
+        {
+            id: 7,
+            note: 'ni',
+            file: ni_note
+        },
+        {
+            id: 8,
+            note: 'ss',
+            file: ss_note
+        }
+    ]
+};
