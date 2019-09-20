@@ -1,7 +1,8 @@
 import React from 'react';
-import {note_file_map, quizQuestionSet} from './NoteMediaFiles';
+import {quizQuestionSet} from './NoteMediaFiles';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
+import Card from 'react-bootstrap/Card';
 
 const bgColors = { "Default": "#81b71a",
                     "Blue": "#00B1E1",
@@ -11,9 +12,7 @@ const bgColors = { "Default": "#81b71a",
                     "Yellow": "#F6BB42",
 };
 
-class NoteIdentifyQuiz extends React.Component{
-
-    
+class NoteIdentifyQuiz extends React.Component{    
     constructor(){
         super();
         this.state = {
@@ -29,62 +28,60 @@ class NoteIdentifyQuiz extends React.Component{
             currentQuestionAttempted:false
         };
         this.playQuestionNote = this.playQuestionNote.bind(this);
-        // this.playAudio = this.playAudio.bind(this);
         this.isPlaying = this.isPlaying.bind(this);
-        this.takeTurn = this.takeTurn.bind(this)
-;        this.audio = null;
-
+        this.takeTurn = this.takeTurn.bind(this);
+        this.audio = null;
         this.checkAnswerSelected = this.checkAnswerSelected.bind(this);
         this.handleNextButton = this.handleNextButton.bind(this);
         
     }
 
     componentDidMount(){
-        console.log("Before takeTurn"+this.state.totalQuestions);
-
-
+        // console.log("Before takeTurn"+this.state.totalQuestions);
         this.setState({ quizStarted:true});
-        this.takeTurn();
-        
-        console.log("After takeTurn"+this.state);
-
+        this.takeTurn();        
+        // console.log("After takeTurn"+this.state);
     }
-    takeTurn(){
-        console.log("in takeTurn()" +this.state.questionsattended);
+
+    async takeTurn(){
+        // console.log("in takeTurn()" +this.state.questionsattended);     
+
+        if(this.state.questionsattended === this.state.totalQuestions){
+            await this.setState({quizCompleted:true});            
+        }else{
+            this.setState(
+                {
+                    currentQuestion : this.getRandonQuestion(),            
+                    enableNext:false,
+                    backgroundColour:{},
+                    currentQuestionAttempted:false
+                }, 
+                ()=> {
+                    console.log("Curret Question set to "+this.state.currentQuestion.note);
+                    this.playQuestionNote()
+                });
+        }        
+    }
+
+    getRandonQuestion(){
         var min = 1;
         var max = quizQuestionSet.list.length;
         var rand =  min + (Math.random() * (max-min));
     
         var question = quizQuestionSet.list[Math.floor(rand)];
-        this.setState(
-            {
-                currentQuestion : question, 
-           
-            enableNext:false,
-            backgroundColour:{},
-            currentQuestionAttempted:false
-        }, ()=> {console.log("Curret Question set to "+this.state.currentQuestion.note);
-        
-        
-        this.playQuestionNote()});
-        
-        
-
-        console.log(this.state);
-
+        return question;
     }
-    playQuestionNote(){
-     
+    
+    playQuestionNote(){     
         if(this.isPlaying()){
             this.audio.pause();
         }
         this.audio = new Audio(this.state.currentQuestion.file);
-
         this.audio.load();
-            console.log(this.audio);
-            this.audio.play();          
-
+        console.log(this.audio);
+        this.audio.play();
     }
+
     isPlaying () {
         return this.audio
             && this.audio.currentTime > 0
@@ -94,8 +91,7 @@ class NoteIdentifyQuiz extends React.Component{
     }
 
     checkAnswerSelected(answerSelected){
-
-        if(answerSelected == this.state.currentQuestion.note){
+        if(answerSelected === this.state.currentQuestion.note){
             console.log("Correct Answer selected");
             if(!this.state.currentQuestionAttempted){
                 this.setState({correctAnswers: (this.state.correctAnswers+1)});
@@ -103,51 +99,31 @@ class NoteIdentifyQuiz extends React.Component{
             this.setState({               
                 backgroundColour: {backgroundColor: bgColors.Green},
                 enableNext:true
-            });
-            
-        
-            
-            
+            });           
         }else{
             console.log("Wrong answer selected. Try again");
             this.setState({backgroundColour: {backgroundColor: bgColors.Red}});
         }
-        this.setState({currentQuestionAttempted:true});
+        this.setState({currentQuestionAttempted:true});        
+    }
+
+    async handleNextButton(){
+        await this.setState({questionsattended:this.state.questionsattended+1});
         
-    }
-
-    // playAudio() {
-    //     const audioPromise = this.audio.play()
-    //     if (audioPromise !== undefined) {
-    //       audioPromise
-    //         .then(_ => {
-    //           // autoplay started
-    //         })
-    //         .catch(err => {
-    //           // catch dom exception
-    //           console.info(err)
-    //         })
-    //     }
-    // }
-
-    handleNextButton(){
-        this.setState({questionsattended:this.state.questionsattended+1});
-        if(this.state.questionsattended === this.state.totalQuestions){
-            this.setState({quizCompleted:true});
-            
-        }
         this.takeTurn();
+               
     }
+
     render(){
         if(!this.state.quizCompleted){
-
             return (
                 <div style={this.state.backgroundColour}>
-                    <h5>Question {this.state.questionsattended+1}</h5>
-                    <Button onClick={this.playQuestionNote}>QuestionNote</Button>
-    
-                    Answers:
-    
+                <Card>
+                    <Card.Body>                    
+                    <h6>Question {this.state.questionsattended+1}:</h6>
+                    <Button size="sm" onClick={this.playQuestionNote}>Question Note</Button>    
+                    <br/>
+                    <h7>Answers:</h7>
                     <Table borderless>
                     <tbody>
                             <tr>
@@ -182,10 +158,10 @@ class NoteIdentifyQuiz extends React.Component{
                                 
                             </tr>
                     </tbody>                    
-                </Table>
-    
-                    
-                <Button disabled={!this.state.enableNext} onClick={this.handleNextButton}>Next</Button>
+                </Table>                   
+                <Button disabled={!this.state.enableNext} onClick={this.handleNextButton}>Next</Button>                
+                    </Card.Body>
+                </Card>
                 
             </div>
             );

@@ -14,20 +14,21 @@ class IntervalDetectionSection extends React.Component{
 
     render(){
         return (
-<>
-            <Card>
+            <>
+            <br/>
+            <Card className="text-center">
                 <Card.Body>
                 <Card.Title>Interval Detection (Coming Soon..)</Card.Title>
                 Listen and identify the played interval
                 <br/>
-                <Button>Practice</Button>
+                <Button>Practice</Button>{' '}
                 <Button>Quiz</Button>
                 </Card.Body>
             </Card>
         
 
             
-        </>
+            </>
         );
     }
 }

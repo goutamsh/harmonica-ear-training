@@ -6,62 +6,71 @@ import Card from 'react-bootstrap/Card';
 import NoteIdentifyPractice from './NoteIdentifyPractice';
 import NoteIdentifyQuiz from './NoteIdentifyQuiz';
 
-class NoteIdentifySection extends React.Component{
-    constructor(){
-        super();
-        this.state = {show: false, showQuiz: false};
-        this.handleClose = () => this.setState({show: false});
-        this.handleShow = () => this.setState({show: true});
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 
-        this.handleQuizClose = () => this.setState({showQuiz: false});
-        this.handleQuizShow = () => this.setState({showQuiz: true});
-    
-      }
+class NoteIdentifySection extends React.Component {
+  constructor() {
+    super();
+    this.state = { show: false, showQuiz: false };
+    this.handleClose = () => this.setState({ show: false });
+    this.handleShow = () => this.setState({ show: true });
 
-    render(){
-        return (
-<>
-            <Card>
-                <Card.Body>
-                <Card.Title>Note Identification</Card.Title>
-                Listen and identify the note
-                <br/>
-                <Button onClick={this.handleShow}>Practice</Button>
-                <Button  onClick={this.handleQuizShow}>Quiz</Button>
-                </Card.Body>
-            </Card>
-        
+    this.handleQuizClose = () => this.setState({ showQuiz: false });
+    this.handleQuizShow = () => this.setState({ showQuiz: true });
 
-            <Modal show={this.state.show} onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Practice Notes</Modal.Title>
-        </Modal.Header>
-        <Modal.Body></Modal.Body>                
-          <NoteIdentifyPractice />          
-        <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleClose}>
-            Close
+  }
+
+  render() {
+    return (
+      <>
+        <Card className="text-center">
+          <Card.Body>
+            <Card.Title>Note Identification</Card.Title>
+            Listen and identify the note
+                  <br/>
+                  
+                    <Button onClick={this.handleShow}>Practice</Button>{' '}
+                    <Button onClick={this.handleQuizShow}>Quiz</Button>
+                  
+            
+          </Card.Body>
+        </Card>
+
+
+        <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" 
+            centered
+            show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Practice Notes</Modal.Title>
+          </Modal.Header>
+          <Modal.Body></Modal.Body>
+          <NoteIdentifyPractice />
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
           </Button>
-          
-        </Modal.Footer>
-      </Modal>
 
-      <Modal show={this.state.showQuiz} onHide={this.handleQuizClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Quiz</Modal.Title>
-        </Modal.Header>
-        <Modal.Body></Modal.Body>                
-          <NoteIdentifyQuiz />          
-        <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleQuizClose}>
-            Close
+          </Modal.Footer>
+        </Modal>
+
+        <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" 
+            centered
+            show={this.state.showQuiz} onHide={this.handleQuizClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Quiz</Modal.Title>
+          </Modal.Header>
+          <Modal.Body></Modal.Body>
+          <NoteIdentifyQuiz />
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleQuizClose}>
+              Close
           </Button>
-          
-        </Modal.Footer>
-      </Modal>
-        </>
-        );
-    }
+
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
 }
 
 
