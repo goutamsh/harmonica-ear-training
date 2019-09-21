@@ -1,5 +1,6 @@
 {
   "name": "harmonica-ear-training-web",
+  "homepage" : "http://goutamsh.github.io/harmonica-ear-training/harmonica-ear-training-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

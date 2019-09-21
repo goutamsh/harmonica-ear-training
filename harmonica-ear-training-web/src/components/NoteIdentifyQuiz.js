@@ -117,13 +117,14 @@ class NoteIdentifyQuiz extends React.Component{
     render(){
         if(!this.state.quizCompleted){
             return (
-                <div style={this.state.backgroundColour}>
+                
                 <Card>
                     <Card.Body>                    
                     <h6>Question {this.state.questionsattended+1}:</h6>
                     <Button size="sm" onClick={this.playQuestionNote}>Question Note</Button>    
                     <br/>
                     <h7>Answers:</h7>
+                    <div style={this.state.backgroundColour}>
                     <Table borderless>
                     <tbody>
                             <tr>
@@ -158,20 +159,23 @@ class NoteIdentifyQuiz extends React.Component{
                                 
                             </tr>
                     </tbody>                    
-                </Table>                   
+                </Table>   
+                </div>                
                 <Button disabled={!this.state.enableNext} onClick={this.handleNextButton}>Next</Button>                
                     </Card.Body>
                 </Card>
                 
-            </div>
+            
             );
         }else{
             return (
-            <div>
-                <h3>Quiz Completed ..Congratulations !!</h3>
+                <Card>
+                <Card.Body>
+                <h3>Congratulations !! Quiz Completed</h3>    
                 <br/>
                 <h5>Scored {this.state.correctAnswers} / {this.state.questionsattended}</h5>
-                </div>
+                </Card.Body>
+                </Card>
                 );
         }
         

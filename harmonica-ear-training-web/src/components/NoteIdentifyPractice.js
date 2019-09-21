@@ -83,7 +83,9 @@ class NoteIdentifyPractice extends React.Component{
                             <td>
                                 <button onClick={() => this.playNote('ni')}>Ni</button>
                             </td>
-                            
+                            <td>
+                                <button onClick={() => this.playNote('ss')}>Sa'</button>
+                            </td>
                         </tr>
                 </tbody>                    
             </Table>

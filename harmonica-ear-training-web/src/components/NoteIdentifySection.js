@@ -6,8 +6,6 @@ import Card from 'react-bootstrap/Card';
 import NoteIdentifyPractice from './NoteIdentifyPractice';
 import NoteIdentifyQuiz from './NoteIdentifyQuiz';
 
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
-
 class NoteIdentifySection extends React.Component {
   constructor() {
     super();
