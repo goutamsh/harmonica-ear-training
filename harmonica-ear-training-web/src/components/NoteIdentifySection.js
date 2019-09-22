@@ -5,19 +5,9 @@ import Card from 'react-bootstrap/Card';
 
 import NoteIdentifyPractice from './NoteIdentifyPractice';
 import NoteIdentifyQuiz from './NoteIdentifyQuiz';
+import {connect} from 'react-redux';
 
 class NoteIdentifySection extends React.Component {
-  constructor() {
-    super();
-    this.state = { show: false, showQuiz: false };
-    this.handleClose = () => this.setState({ show: false });
-    this.handleShow = () => this.setState({ show: true });
-
-    this.handleQuizClose = () => this.setState({ showQuiz: false });
-    this.handleQuizShow = () => this.setState({ showQuiz: true });
-
-  }
-
   render() {
     return (
       <>
@@ -27,8 +17,8 @@ class NoteIdentifySection extends React.Component {
             Listen and identify the note
                   <br/>
                   
-                    <Button onClick={this.handleShow}>Practice</Button>{' '}
-                    <Button onClick={this.handleQuizShow}>Quiz</Button>
+                    <Button onClick={this.props._handleShowNoteIdentifyPractice}>Practice</Button>{' '}
+                    <Button onClick={this.props._handleShowNoteIdentifyQuiz}>Quiz</Button>
                   
             
           </Card.Body>
@@ -37,14 +27,14 @@ class NoteIdentifySection extends React.Component {
 
         <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" 
             centered
-            show={this.state.show} onHide={this.handleClose}>
+            show={this.props.showNoteIdentifyPractice} onHide={this.props._handleCloseNoteIdentifyPractice}>
           <Modal.Header closeButton>
             <Modal.Title>Practice Notes</Modal.Title>
           </Modal.Header>
           <Modal.Body></Modal.Body>
           <NoteIdentifyPractice />
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
+            <Button variant="secondary" onClick={this.props._handleCloseNoteIdentifyPractice}>
               Close
           </Button>
 
@@ -53,14 +43,14 @@ class NoteIdentifySection extends React.Component {
 
         <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" 
             centered
-            show={this.state.showQuiz} onHide={this.handleQuizClose}>
+            show={this.props.showNoteIdentifyQuiz} onHide={this.props._handleCloseNoteIdentifyQuiz}>
           <Modal.Header closeButton>
             <Modal.Title>Quiz</Modal.Title>
           </Modal.Header>
           <Modal.Body></Modal.Body>
           <NoteIdentifyQuiz />
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleQuizClose}>
+            <Button variant="secondary" onClick={this.props._handleCloseNoteIdentifyQuiz}>
               Close
           </Button>
 
@@ -72,4 +62,43 @@ class NoteIdentifySection extends React.Component {
 }
 
 
-export default NoteIdentifySection;
+const mapStateToProps = (state) => {
+  return {
+    showNoteIdentifyPractice : state.showNoteIdentifyPractice,
+    showNoteIdentifyQuiz : state.showNoteIdentifyQuiz
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    _handleShowNoteIdentifyPractice: () => {
+      dispatch({
+        type:'SHOW_NOTE_IDENTIFY_PRACTICE'
+      })
+    },
+
+    _handleShowNoteIdentifyQuiz: () => {
+      dispatch({
+        type: 'SHOW_NOTE_IDENTIFY_QUIZ'
+      })
+    },
+
+    _handleCloseNoteIdentifyPractice: () => {
+      dispatch({
+        type:'CLOSE_NOTE_IDENTIFY_PRACTICE'
+      })
+    },
+
+    _handleCloseNoteIdentifyQuiz: () => {
+      dispatch({
+        type: 'CLOSE_NOTE_IDENTIFY_QUIZ'
+      })
+    }
+
+
+
+
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (NoteIdentifySection);

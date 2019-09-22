@@ -8,13 +8,7 @@ import IntervalDetectionSection from './IntervalDetectionSection';
 
 
 class  EarTrainingApp extends React.Component {
-  constructor(){
-    super();
-    this.state = {show: false};
-    this.handleClose = () => this.setState({show: false});
-    this.handleShow = () => this.setState({show: true});
-
-  }
+  
   render(){
     return (
       
