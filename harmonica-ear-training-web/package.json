@@ -1,6 +1,5 @@
 {
   "name": "harmonica-ear-training-web",
-  "homepage": "http://goutamsh.github.io/harmonica-ear-training/harmonica-ear-training-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,6 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": "react-app"
   },
