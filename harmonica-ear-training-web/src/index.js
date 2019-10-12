@@ -2,18 +2,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import EarTrainingApp from './components/EarTrainingApp';
+// import EarTrainingApp from './components/EarTrainingApp';
 import * as serviceWorker from './serviceWorker';   
-import {createStore} from 'redux';
-import reducer from './components/Reducer';
 import {Provider} from 'react-redux';
-
-
-const store =  createStore(reducer);
+import { store } from './_helpers';
+import App from './App';
 
 ReactDOM.render(
     <Provider store={store}>
-        <EarTrainingApp />
+        <App />
     </Provider>
 , document.getElementById('root'));
 

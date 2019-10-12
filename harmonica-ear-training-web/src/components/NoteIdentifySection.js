@@ -63,10 +63,12 @@ class NoteIdentifySection extends React.Component {
 
 
 const mapStateToProps = (state) => {
+  const { harp_ear_raining_reducer } = state;
+  
   return {
-    showNoteIdentifyPractice : state.showNoteIdentifyPractice,
-    showNoteIdentifyQuiz : state.showNoteIdentifyQuiz
-  };
+    showNoteIdentifyPractice : harp_ear_raining_reducer.showNoteIdentifyPractice,
+    showNoteIdentifyQuiz : harp_ear_raining_reducer.showNoteIdentifyQuiz
+  } ;
 }
 
 const mapDispatchToProps = (dispatch) => {

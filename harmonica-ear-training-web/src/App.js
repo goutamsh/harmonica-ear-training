@@ -1,52 +1,66 @@
 import React from 'react';
-import Sound from 'react-sound';
-import soundfile from './sounds/dha.aac';
-import Music from './Music';
-import MainTabs from './components/MainTabs';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import NoteIdentifyPractice from './components/NoteIdentifyPractice';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { history } from './_helpers';
+import { alertActions } from './_actions';
+
+import { LoginPage } from './LoginPage';
+import { RegisterPage } from './RegisterPage';
+import  {EarTrainingApp} from './components/EarTrainingApp'
 
 
 class  App extends React.Component {
-  constructor(){
-    super();
-    this.state = {show: false};
-    this.handleClose = () => this.setState({show: false});
-    this.handleShow = () => this.setState({show: true});
 
+    constructor(props) {
+      super(props);
+
+      history.listen((location, action) => {
+          // clear alert on location change
+          this.props.clearAlerts();
+      });
   }
+
+  
   render(){
-    return (
-      <div>
-         
-      <h1>Harmonica Ear Training</h1>
-      
-          
-
-      <Button onClick={this.handleShow}>Small modal</Button>
-
-
-<Modal show={this.state.show} onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Practice Notes</Modal.Title>
-        </Modal.Header>
-        <Modal.Body></Modal.Body>                
-          <NoteIdentifyPractice />          
-        <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleClose}>
-            Close
-          </Button>
-          
-        </Modal.Footer>
-      </Modal>
-      </div>
-    );
+    const { alert } = this.props;
+        return (
+            <div className="jumbotron">
+                <div className="container">
+                    <div className="col-sm-8 col-sm-offset-2">
+                        {alert.message &&
+                            <div className={`alert ${alert.type}`}>{alert.message}</div>
+                            
+                        }
+                        {
+                          console.log("HEllo from App")
+                        }
+                        
+                        <Router history={history}>
+                            <Switch>
+                                
+                                <Route exact path="/" component={EarTrainingApp} />
+                                <Route path="/login" component={LoginPage} />
+                                <Route path="/register" component={RegisterPage} />
+                                
+                            </Switch>
+                        </Router>
+                    </div>
+                </div>
+            </div>
+        );
   }
   
 }
+function mapState(state) {
+  const { alert } = state;
+  return { alert };
+}
 
-export default App;
+const actionCreators = {
+  clearAlerts: alertActions.clear
+};
+
+
+
+export default connect(mapState, actionCreators) (App);

@@ -1,5 +1,5 @@
 
-import {note_file_map, quizQuestionSet, bgColors} from './NoteMediaFiles';
+import {note_file_map, quizQuestionSet, bgColors} from '../components/NoteMediaFiles';
 
 
 
@@ -26,7 +26,7 @@ const initialState = {
     }
 };
 
-const reducer = (state = initialState, action) => {
+export function harp_ear_raining_reducer(state = initialState, action) {
     switch(action.type){
 
         case 'SHOW_NOTE_IDENTIFY_PRACTICE':
@@ -159,5 +159,3 @@ const getRandonQuestion = () => {
     return question;
 }
 
-
-export default reducer;

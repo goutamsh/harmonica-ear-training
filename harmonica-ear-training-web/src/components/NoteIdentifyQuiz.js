@@ -95,8 +95,9 @@ class NoteIdentifyQuiz extends React.Component{
 
 
 const mapStateToProps = (state) => {
+    const { harp_ear_raining_reducer } = state;
     return {
-        ...state.quiz
+        ...harp_ear_raining_reducer.quiz
     };
 }
 

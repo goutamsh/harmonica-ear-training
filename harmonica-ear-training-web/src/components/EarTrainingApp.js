@@ -5,9 +5,10 @@ import Col from 'react-bootstrap/Col';
 import Header from './Header';
 import NoteIdentifySection from './NoteIdentifySection';
 import IntervalDetectionSection from './IntervalDetectionSection';
-
+import { connect } from 'react-redux';
 
 class  EarTrainingApp extends React.Component {
+    
   
   render(){
     return (
@@ -35,4 +36,16 @@ class  EarTrainingApp extends React.Component {
   
 }
 
-export default EarTrainingApp;
+function mapState(state) {
+
+    return {  };
+}
+
+const actionCreators = {
+    
+};
+
+const connectedEarTrainingApp = connect(mapState, actionCreators)(EarTrainingApp);
+export { connectedEarTrainingApp as EarTrainingApp };
+
+
