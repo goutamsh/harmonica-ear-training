@@ -34,6 +34,7 @@ function login(username, password) {
 }
 
 function logout() {
+    console.log('User action logout');
     userService.logout();
     return { type: userConstants.LOGOUT };
 }

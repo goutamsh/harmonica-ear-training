@@ -60,6 +60,14 @@ http://harmonicaeartraining-env.qvp343kmiz.us-east-1.elasticbeanstalk.com/
 
 
 
+References:
+
+1. Springboot + JWT : https://medium.com/swlh/spring-boot-security-jwt-hello-world-example-b479e457664c
+
+2. https://www.callicoder.com/spring-boot-spring-security-jwt-mysql-react-app-part-2/
+
+3. React + User registration : https://jasonwatmore.com/post/2017/09/16/react-redux-user-registration-and-login-tutorial-example
+
 
 
 

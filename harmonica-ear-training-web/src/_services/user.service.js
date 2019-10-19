@@ -2,7 +2,7 @@
 import { authHeader } from '../_helpers';
 
 const config = {
-    apiUrl: 'http://localhost:4000'
+    apiUrl: 'http://localhost:8080'
 }
 export const userService = {
     login,
@@ -32,6 +32,7 @@ function login(username, password) {
 }
 
 function logout() {
+    console.log('User service logout');
     // remove user from local storage to log user out
     localStorage.removeItem('user');
 }
