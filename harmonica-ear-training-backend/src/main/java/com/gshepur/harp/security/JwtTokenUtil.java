@@ -1,4 +1,4 @@
-package com.gshepur.harp;
+package com.gshepur.harp.security;
 
 import java.io.Serializable;
 import java.util.Date;

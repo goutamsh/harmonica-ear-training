@@ -1,5 +1,7 @@
-package com.gshepur.harp;
+package com.gshepur.harp.config;
 
+import com.gshepur.harp.security.JwtAuthenticationEntryPoint;
+import com.gshepur.harp.security.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
 // dont authenticate this particular request
                 .authorizeRequests().antMatchers("/users/authenticate").permitAll().
+                antMatchers("/users/register").permitAll().
 // all other requests need to be authenticated
         anyRequest().authenticated().and().
 // make sure we use stateless session; session won't be used to

@@ -1,5 +1,10 @@
-package com.gshepur.harp;
+package com.gshepur.harp.controller;
 
+import com.gshepur.harp.dto.JwtRequest;
+import com.gshepur.harp.dto.JwtResponse;
+import com.gshepur.harp.dto.UserRegisterRequest;
+import com.gshepur.harp.login.JwtUserDetailsService;
+import com.gshepur.harp.security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,7 +31,7 @@ public class JwtAuthenticationController {
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new JwtResponse(token));
+        return ResponseEntity.ok(new JwtResponse(userDetails.getUsername(), token));
     }
 
     private void authenticate(String username, String password) throws Exception {
@@ -37,5 +42,13 @@ public class JwtAuthenticationController {
         } catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
+    }
+
+    @PostMapping("register")
+    public void registerUser(@RequestBody UserRegisterRequest userRegisterRequest){
+
+        System.out.println("register user "+userRegisterRequest);
+        userDetailsService.registerNewUser(userRegisterRequest);
+
     }
 }

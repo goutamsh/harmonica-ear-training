@@ -9,7 +9,7 @@ class Header extends React.Component{
     render(){
         return(
             <Jumbotron >
-                {localStorage.getItem('user') ? <h6>Hi {JSON.parse(localStorage.getItem('user')).token}
+                {localStorage.getItem('user') ? <h6>Hi {JSON.parse(localStorage.getItem('user')).username}
                 <Link to={'/login'}>
                 <span onClick={this.props.logout}>Logout</span>
                 </Link>
