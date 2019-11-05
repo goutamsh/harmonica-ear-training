@@ -69,6 +69,10 @@ http://harmonicaeartraining-env.qvp343kmiz.us-east-1.elasticbeanstalk.com/
 3. Get the hostname and port from the RDS console and use it in java application along with username and password
 
 4. The point 3 can also be used to connect from any MySQL Client.
+
+5. Install Java in AWS EC2 : https://dzone.com/articles/installing-java-8-on-aws-ec2-amazon-linux-instance
+
+
    
 
 
