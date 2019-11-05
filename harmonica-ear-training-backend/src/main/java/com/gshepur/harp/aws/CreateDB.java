@@ -1,9 +1,9 @@
 package com.gshepur.harp.aws;
 
-import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.rds.AmazonRDS;
 import com.amazonaws.services.rds.AmazonRDSClientBuilder;
@@ -28,12 +28,7 @@ public class CreateDB {
 
 
     public CreateDB() throws IOException {
-        credentials = new
-                AWSStaticCredentialsProvider(new
-                BasicAWSCredentials("<Key>",
-                "<Secret>"));
-
-
+        credentials = new ProfileCredentialsProvider();
 
         amazonRDS = AmazonRDSClientBuilder.standard().withCredentials(credentials)
                 .withRegion(Regions.US_EAST_1).build();
@@ -146,10 +141,10 @@ public class CreateDB {
         createDB.createDB();
 
         //List the instances
-        createDB.listInstances();
+        //createDB.listInstances();
 
         //Terminate the DB instance created by createDB() method
-        createDB.terminateInstance("goutam");
+        //createDB.terminateInstance("goutam");
 
     }
 
