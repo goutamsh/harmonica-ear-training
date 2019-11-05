@@ -59,20 +59,30 @@ the application can be opened from :
 http://harmonicaeartraining-env.qvp343kmiz.us-east-1.elasticbeanstalk.com/
 
 
-## Connecting to AWS RDS 
+### Connecting to AWS RDS 
 
 1. First create DB with AWS RDS MySQL
-    
+   Code to create AWS RDS MySQL DB can be found [here](https://github.com/goutamsh/harmonica-ear-training/blob/master/harmonica-ear-training-backend/src/main/java/com/gshepur/harp/aws/CreateDB.java)
+   
+2. Go to security group under the AWS RDS database and edit inbound traffic to accept connection to MySQL at port 3306 from anywhere.
+
+3. Get the hostname and port from the RDS console and use it in java application along with username and password
+
+4. The point 3 can also be used to connect from any MySQL Client.
+   
 
 
 
-References:
+### References:
 
 1. Springboot + JWT : https://medium.com/swlh/spring-boot-security-jwt-hello-world-example-b479e457664c
 
 2. https://www.callicoder.com/spring-boot-spring-security-jwt-mysql-react-app-part-2/
 
 3. React + User registration : https://jasonwatmore.com/post/2017/09/16/react-redux-user-registration-and-login-tutorial-example
+
+4. AWS RDS MySQL connection : https://www.baeldung.com/aws-aurora-rds-java
+
 
 
 
