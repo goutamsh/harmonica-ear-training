@@ -7,10 +7,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.rds.AmazonRDS;
 import com.amazonaws.services.rds.AmazonRDSClientBuilder;
-import com.amazonaws.services.rds.model.CreateDBInstanceRequest;
-import com.amazonaws.services.rds.model.DBInstance;
-import com.amazonaws.services.rds.model.DescribeDBInstancesResult;
-import com.amazonaws.services.rds.model.Endpoint;
+import com.amazonaws.services.rds.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,13 +105,51 @@ public class CreateDB {
 
     }
 
+    public void terminateInstance(String identifier)
+    {
+        System.out.println("\n\nTERMINATE INSTANCE\n\n");
+        try
+        {
+            // The DeleteDBInstanceRequest
+            DeleteDBInstanceRequest request = new DeleteDBInstanceRequest();
+            request.setDBInstanceIdentifier(identifier);
+            request.setSkipFinalSnapshot(true);
+
+            // Delete the RDS instance
+            DBInstance instance = amazonRDS.deleteDBInstance(request);
+
+            // Information about the RDS instance being deleted
+            String status = instance.getDBInstanceStatus();
+            Endpoint endpoint = instance.getEndpoint();
+            String endpoint_url = "Endpoint URL not available yet.";
+            if (endpoint != null)
+            {
+                endpoint_url = endpoint.toString();
+            }
+
+            // Do some printing work
+            System.out.println(identifier + "\t" + status);
+            System.out.println(endpoint_url);
+        } catch (Exception e)
+        {
+            // Simple exception handling by printing out error message and stack trace
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws IOException {
 
         CreateDB createDB = new CreateDB();
 
+        //Create DB
         createDB.createDB();
 
+        //List the instances
         createDB.listInstances();
+
+        //Terminate the DB instance created by createDB() method
+        createDB.terminateInstance("goutam");
 
     }
 
