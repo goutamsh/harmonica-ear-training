@@ -30,8 +30,8 @@ public class CreateDB {
     public CreateDB() throws IOException {
         credentials = new
                 AWSStaticCredentialsProvider(new
-                BasicAWSCredentials("AKIA3P5LOJQBETUNFFRJ",
-                "uf14W87c4H4MtV3Lw1tqlhqVskmvhPy3DToq6cbj"));
+                BasicAWSCredentials("<Key>",
+                "<Secret>"));
 
 
 
