@@ -59,6 +59,12 @@ the application can be opened from :
 http://harmonicaeartraining-env.qvp343kmiz.us-east-1.elasticbeanstalk.com/
 
 
+## Connecting to AWS RDS 
+
+1. First create DB with AWS RDS MySQL
+    
+
+
 
 References:
 
