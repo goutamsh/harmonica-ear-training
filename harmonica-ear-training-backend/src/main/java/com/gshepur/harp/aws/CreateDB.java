@@ -138,13 +138,13 @@ public class CreateDB {
         CreateDB createDB = new CreateDB();
 
         //Create DB
-        createDB.createDB();
+//        createDB.createDB();
 
         //List the instances
         //createDB.listInstances();
 
         //Terminate the DB instance created by createDB() method
-        //createDB.terminateInstance("goutam");
+        createDB.terminateInstance("goutam");
 
     }
 
