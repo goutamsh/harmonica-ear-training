@@ -29,6 +29,13 @@ for dev: http://localhost:3000
 
 ![Architecture Diagram](misc/architecture-diagram.png)
 
+
+#### Fitnesse Tests
+
+#### Continuous Integration
+
+--
+ 
 React app is bundled in spring-boot application 
 
 To build production use below command
