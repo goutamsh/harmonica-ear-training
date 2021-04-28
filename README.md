@@ -27,7 +27,7 @@ this starts react application at
 
 for dev: http://localhost:3000
 
-![Architecture Diagram](https://github.com/goutamsh/harmonica-ear-training/tree/master/misc/architecture-diagram.png)
+![Architecture Diagram](https://github.com/goutamsh/harmonica-ear-training/tree/master/misc/architecture-diagram.png?raw=true)
 
 React app is bundled in spring-boot application 
 
